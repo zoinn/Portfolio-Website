@@ -7,10 +7,10 @@ const HomePage = () => {
     <Container maxWidth="md">
       <Box sx={{ textAlign: 'center', mt: 8 }}>
         <Typography variant="h2" color="textPrimary" gutterBottom>
-          Welcome to My Portfolio
+          Github Repositories (Updates Dynamically)
         </Typography>
         <Typography variant="h5" color="textSecondary" paragraph>
-          My work in progress portfolio!
+
         </Typography>
       </Box>
     </Container>

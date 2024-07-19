@@ -1,9 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ItemViewSet
+from .views import RepoListViewSet
 
 router = DefaultRouter()
-router.register(r'items', ItemViewSet)
+router.register(r'repos', RepoListViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

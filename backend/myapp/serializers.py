@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Item
+from .models import RepoList
 
-class ItemSerializer(serializers.ModelSerializer):
+class RepoListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Item
+        model = RepoList
         fields = '__all__'
