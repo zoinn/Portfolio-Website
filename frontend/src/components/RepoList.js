@@ -8,7 +8,7 @@ const fetchData = async (repoName, setRepoDetails, setLoading, setError) => {
     setError(null);   // Clear any previous errors
 
     try {
-        const response = await axios.get(`http://localhost:8000/api/repos/repodetail?repo_name=${repoName}`); // Replace with your API endpoint
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/repos/repodetail?repo_name=${repoName}`); // Replace with your API endpoint
         const data = response.data;
 
         // Assuming the data returned is a single repository object
@@ -28,7 +28,7 @@ export const RepoList = () => {
 
     useEffect(() => {
         // Fetch the list of repositories
-        axios.get('http://localhost:8000/api/repos/repolist')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/repos/repolist`)
             .then(response => {
                 setRepoList(response.data.repo_names || response.data); // Adjust based on API response
             })

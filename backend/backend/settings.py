@@ -25,12 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-10$)l%ot8p$-7g#2h+#opw#92cb76ysh*&xng$20j-8s40kc5$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
+DEBUG = False
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -122,6 +117,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = 'static/'
 
 # Default primary key field type
@@ -140,3 +137,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Now you can use the variables from the .env file
 GITHUB_TOKEN = env('GITHUB_TOKEN')
+
+ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(',')
+# Application definition
+

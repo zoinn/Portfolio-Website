@@ -70,3 +70,5 @@ logs/
 
 # Build directories
 out/
+
+/backend/zainsiuportfolio.pem
