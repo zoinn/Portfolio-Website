@@ -2,35 +2,32 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Typography, Button, Box, CircularProgress, Alert } from '@mui/material';
 
-// Function to fetch repository details
 const fetchData = async (repoName, setRepoDetails, setLoading, setError) => {
-    setLoading(true); // Set loading to true before making the API call
-    setError(null);   // Clear any previous errors
+    setLoading(true);
+    setError(null);
 
     try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/repos/repodetail?repo_name=${repoName}`); // Replace with your API endpoint
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/repos/repodetail?repo_name=${repoName}`);
         const data = response.data;
 
-        // Assuming the data returned is a single repository object
-        setRepoDetails(data); // Update the state with the repository details
+        setRepoDetails(data);
     } catch (err) {
-        setError('Error fetching data'); // Set error message
+        setError('Error fetching data');
     } finally {
-        setLoading(false); // Reset loading state
+        setLoading(false);
     }
 };
 
 export const RepoList = () => {
     const [repoList, setRepoList] = useState([]);
-    const [repoDetails, setRepoDetails] = useState(null); // State to store the details of the selected repo
+    const [repoDetails, setRepoDetails] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Fetch the list of repositories
         axios.get(`${process.env.REACT_APP_API_URL}/api/repos/repolist`)
             .then(response => {
-                setRepoList(response.data.repo_names || response.data); // Adjust based on API response
+                setRepoList(response.data.repo_names || response.data);
             })
             .catch(error => {
                 console.error('There was an error fetching the repo list!', error);
@@ -67,7 +64,6 @@ export const RepoList = () => {
             {repoDetails && (
                 <Box mt={4}>
                     <Typography variant="h6" gutterBottom>Repository Details</Typography>
-                    <Typography variant="body1"><strong>Name:</strong> {repoDetails.name}</Typography>
                     <Typography variant="body1"><strong>Description:</strong> {atob(repoDetails.content)}</Typography>
                     <Typography variant="body1">
                         <strong>URL:</strong>

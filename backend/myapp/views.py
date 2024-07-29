@@ -28,7 +28,7 @@ class RepoListViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def repodetail(self, request):
-        repo_name = request.query_params.get('repo_name')  # Use query parameters to get the repo name
+        repo_name = request.query_params.get('repo_name')
         if not repo_name:
             return Response({"error": "Repository name is required"}, status=400)
 
@@ -41,7 +41,6 @@ class RepoListViewSet(viewsets.ModelViewSet):
 
         if response.status_code == 200:
             data = response.json()
-            print(data)
             return Response(data)
         else:
             return Response({"error": f"Failed to retrieve data: {response.status_code}"}, status=response.status_code)

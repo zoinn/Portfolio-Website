@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-10$)l%ot8p$-7g#2h+#opw#92cb76ysh*&xng$20j-8s40kc5$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 INSTALLED_APPS = [
     'corsheaders',

@@ -71,4 +71,5 @@ logs/
 # Build directories
 out/
 
+/backend/staticfiles
 /backend/zainsiuportfolio.pem
