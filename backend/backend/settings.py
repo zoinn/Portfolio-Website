@@ -22,10 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-10$)l%ot8p$-7g#2h+#opw#92cb76ysh*&xng$20j-8s40kc5$'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -137,7 +135,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Now you can use the variables from the .env file
 GITHUB_TOKEN = env('GITHUB_TOKEN')
-
+SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(',')
 # Application definition
 
