@@ -39,17 +39,16 @@ export const RepoList = () => {
     }, []);
 
     return (
-        <Container>
+         <Container maxWidth="md">
             <Typography variant="h4" gutterBottom>Repositories</Typography>
-            <Box mb={2}>
+            <Box mb={2} display="flex" justifyContent="center" width="100%">
                 {repoList.length > 0 ? (
-                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid container spacing={{ xs: 2, md: 3 }} justifyContent="center">
                         {repoList.map(item => (
-                             <Grid item xs={12} sm={6} md={3} key={item}>
+                            <Grid item xs={12} sm={6} md={3} key={item} display="flex" justifyContent="center">
                                 <Button
                                     variant="contained"
                                     color="primary"
-
                                     onClick={() => fetchData(item, setRepoDetails, setLoading, setError)}
                                     sx={{
                                         width: '200px',
@@ -67,7 +66,7 @@ export const RepoList = () => {
                         ))}
                     </Grid>
                 ) : (
-                    <Typography>No repositories available</Typography>
+                    <Typography>Backend Loading, Please Wait. (10-30 Seconds)</Typography>
                 )}
             </Box>
 
