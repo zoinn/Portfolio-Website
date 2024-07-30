@@ -21,3 +21,10 @@ a:link {
     text-decoration: none;
     color: White;
 }
+
+html, body {
+    min-width: 320px;  /* Set a minimum width */
+    min-height: 480px; /* Set a minimum height */
+    margin: 0;
+    padding: 0;
+}

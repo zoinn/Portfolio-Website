@@ -1,12 +1,18 @@
 import React from 'react';
 import RepoList from './components/RepoList';
-import HomePage from './components/HomePage';
+import MainPage from './components/MainPage';
+import FooterComponent from "./components/FooterComponent ";
+import AboutMe from "./components/AboutMe";
 
 function App() {
     return (
-        <div>
-            <HomePage/>
-            <RepoList/>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <main style={{ flex: 1 }}>
+                <MainPage />
+                <AboutMe/>
+                <RepoList/>
+            </main>
+            <FooterComponent />
         </div>
     );
 }
