@@ -27,4 +27,40 @@ html, body {
     min-height: 480px; /* Set a minimum height */
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+html {
+    font-size: clamp(0.5rem, 4vw, 1.15rem); /* Responsive base font size */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+
+.deck {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+
+.deck > div {
+    background-color: #333333;
+    color: white;
+    font-size: 2rem;
+    background-size: auto 85%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 45vh;
+    max-width: 285px;
+    height: 85vh;
+    max-height: 150px;
+    will-change: transform;
+    border-radius: 10px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.2);
 }

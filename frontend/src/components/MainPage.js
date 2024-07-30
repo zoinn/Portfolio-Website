@@ -4,7 +4,16 @@ import { Container, Typography, Box } from '@mui/material';
 
 const MainPage = () => {
   return (
-    <Container maxWidth="md">
+    <Container
+        maxWidth="md"
+        sx={{
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          wordBreak: 'break-word'
+        }}>
       <Box sx={{ textAlign: 'center', mt: 8 }}>
         <Typography variant="h1" color="textPrimary" gutterBottom>
           Zain Siu's Portfolio
