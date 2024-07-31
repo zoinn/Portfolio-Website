@@ -4,18 +4,6 @@ import { useDrag } from 'react-use-gesture';
 import '../styles.css';
 import {Container, Box, Typography} from "@mui/material";
 
-const cards = [
-    'React',
-    'Javascript',
-    'Typescript',
-    'C++',
-    'C#',
-    'Haskell',
-    'Java',
-    'HTML & CSS',
-    'Python',
-];
-
 // Helper functions
 const to = (i) => ({
   x: 0,
@@ -30,7 +18,7 @@ const from = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-const Skills = () => {
+const SkillSwipe = ({cards, title}) => {
   const [gone] = useState(() => new Set());
   const [startAnimation] = useState(false);
 
@@ -91,7 +79,7 @@ const Skills = () => {
         }}
       >
         <Typography variant="h2" color="textPrimary" gutterBottom>
-          Skills <Typography variant='body2'>Swipe the skills!</Typography>
+            {title} <Typography variant='body2'>Swipe the skills!</Typography>
         </Typography>
       </Box>
 
@@ -126,4 +114,4 @@ const Skills = () => {
    );
 };
 
-export default Skills;
+export default SkillSwipe;

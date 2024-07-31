@@ -1,11 +1,61 @@
 import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { Grid} from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import RepoList from './components/RepoList';
 import MainPage from './components/MainPage';
 import FooterComponent from "./components/FooterComponent ";
 import AboutMe from "./components/AboutMe";
-import Skills from "./components/Skills";
+import SkillSwipe from "./components/SkillSwipe";
+
+const langcards = [
+    'React',
+    'Javascript',
+    'Typescript',
+    'C++',
+    'C#',
+    'Haskell',
+    'Java',
+    'HTML & CSS',
+    'Python',
+];
+
+const librarycards = [
+    'Pandas',
+    'Sci-kit',
+    'Tensorflow',
+    'Pytorch',
+    'PostgreSQL',
+    'OpenCV',
+    'Numpy',
+    'React-Spring',
+];
+
+const skillcards = [
+    'Machine Learning',
+    'TDD',
+    'Git',
+    'AWS',
+    'Azure',
+    'Cypress',
+    'MongoDB',
+    'SQL',
+    'REST API',
+
+];
+
+// Used to shuffle array's every refresh
+function shuffle(array) {
+  let currentIndex = array.length;
+  while (currentIndex !== 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
 
 function App() {
   const { ref: mainPageRef, inView: mainPageInView } = useInView({ triggerOnce: false });
@@ -39,22 +89,37 @@ function App() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <main style={{ flex: 1 }}>
+      <main style={{flex: 1}}>
         <animated.div ref={mainPageRef} style={mainPageProps}>
-          <MainPage />
+          <MainPage/>
         </animated.div>
         <animated.div ref={aboutMeRef} style={aboutMeProps}>
-          <AboutMe />
+          <AboutMe/>
         </animated.div>
         <animated.div ref={skillsRef} style={skillsProps}>
-          <Skills />
+          <Grid container spacing={3} sx = {{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}>
+            <Grid item xs={9} sm={3}>
+              <SkillSwipe cards={shuffle(skillcards)} title = "Skills"/>
+            </Grid>
+            <Grid item xs={9} sm={3}>
+              <SkillSwipe cards={shuffle(langcards)} title = "Languages"/>
+            </Grid>
+            <Grid item xs={9} sm={3}>
+              <SkillSwipe cards={shuffle(librarycards)} title = "Libraries"/>
+            </Grid>
+          </Grid>
         </animated.div>
         <animated.div ref={repoListRef} style={repoListProps}>
-          <RepoList />
+          <RepoList/>
         </animated.div>
       </main>
-      <animated.div style={{ opacity: 1, transform: 'translateY(0px)' }}>
-        <FooterComponent />
+      <animated.div style={{opacity: 1, transform: 'translateY(0px)'}}>
+        <FooterComponent/>
       </animated.div>
     </div>
   );
