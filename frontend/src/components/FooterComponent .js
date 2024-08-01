@@ -21,6 +21,10 @@ const FooterComponent  = () => {
                       <a href="https://github.com/zoinn" target="_blank" rel="noopener noreferrer" >
                           <GitHubIcon fontSize="large"/></a>
                   </Box>
+                  <Box m={1}>
+                    <HorizontalRuleIcon fontSize="large" sx={{ transform: 'rotate(90deg)' }}/>
+                  </Box>
+                  <Typography variant="body1">Built on Django & React</Typography>
               </Box>
           </Container>
       </footer>
