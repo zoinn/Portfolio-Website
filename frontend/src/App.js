@@ -8,42 +8,6 @@ import FooterComponent from "./components/FooterComponent ";
 import AboutMe from "./components/AboutMe";
 import SkillSwipe from "./components/SkillSwipe";
 
-const langcards = [
-    'React',
-    'Javascript',
-    'Typescript',
-    'C++',
-    'C#',
-    'Haskell',
-    'Java',
-    'HTML & CSS',
-    'Python',
-];
-
-const librarycards = [
-    'Pandas',
-    'Sci-kit',
-    'Tensorflow',
-    'Pytorch',
-    'PostgreSQL',
-    'OpenCV',
-    'Numpy',
-    'React-Spring',
-];
-
-const skillcards = [
-    'Machine Learning',
-    'TDD',
-    'Git',
-    'AWS',
-    'Azure',
-    'Cypress',
-    'MongoDB',
-    'SQL',
-    'REST API',
-
-];
-
 // Used to shuffle array's every refresh
 function shuffle(array) {
   let currentIndex = array.length;
@@ -56,6 +20,41 @@ function shuffle(array) {
   }
   return array;
 }
+
+const skillcards = shuffle([
+    'Machine Learning',
+    'TDD',
+    'Git',
+    'AWS',
+    'Azure',
+    'Cypress',
+    'MongoDB',
+    'SQL',
+    'REST API',
+]);
+
+const langcards = shuffle([
+    'React',
+    'Javascript',
+    'Typescript',
+    'C++',
+    'C#',
+    'Haskell',
+    'Java',
+    'HTML & CSS',
+    'Python',
+]);
+
+const librarycards = shuffle([
+    'Pandas',
+    'Sci-kit',
+    'Tensorflow',
+    'Pytorch',
+    'PostgreSQL',
+    'OpenCV',
+    'Numpy',
+    'React-Spring',
+]);
 
 function App() {
   const { ref: mainPageRef, inView: mainPageInView } = useInView({ triggerOnce: false });
@@ -104,13 +103,13 @@ function App() {
             textAlign: 'center',
           }}>
             <Grid item xs={9} sm={3}>
-              <SkillSwipe cards={shuffle(skillcards)} title = "Skills"/>
+              <SkillSwipe cards={skillcards} title = "Skills"/>
             </Grid>
             <Grid item xs={9} sm={3}>
-              <SkillSwipe cards={shuffle(langcards)} title = "Languages"/>
+              <SkillSwipe cards={langcards} title = "Languages"/>
             </Grid>
             <Grid item xs={9} sm={3}>
-              <SkillSwipe cards={shuffle(librarycards)} title = "Libraries"/>
+              <SkillSwipe cards={librarycards} title = "Libraries"/>
             </Grid>
           </Grid>
         </animated.div>
