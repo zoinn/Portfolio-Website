@@ -4,7 +4,6 @@ import { useDrag } from 'react-use-gesture';
 import '../styles.css';
 import {Container, Box, Typography} from "@mui/material";
 
-// Helper functions
 const to = (i) => ({
   x: 0,
   y: i * -4,

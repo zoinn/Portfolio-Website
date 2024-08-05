@@ -1,11 +1,10 @@
-// src/components/HomePage.js
 import React from 'react';
 import { Container, Typography, Grid, Box } from '@mui/material';
 import boulderingGif from '../assets/videos/bouldering.gif';
 
 const AboutMe = () => {
   return (
-       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+       <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center' }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6} sx={{ textAlign: 'left', mt: 8 }}>

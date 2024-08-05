@@ -64,3 +64,26 @@ html {
     border-radius: 10px;
      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.2);
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.flip {
+  position: absolute;
+  max-width: 500px;
+  max-height: 500px;
+  width: 350px;
+  height: 200px;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.front,
+.back {
+  background-size: cover;
+  background-color: #0f0f0f;
+}

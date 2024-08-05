@@ -1,4 +1,3 @@
-// src/components/HomePage.js
 import React from 'react';
 import {Container, Box, Typography} from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';

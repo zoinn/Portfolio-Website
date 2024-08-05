@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import { Grid} from '@mui/material';
+import { Grid } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import RepoList from './components/RepoList';
 import MainPage from './components/MainPage';
 import FooterComponent from "./components/FooterComponent ";
 import AboutMe from "./components/AboutMe";
 import SkillSwipe from "./components/SkillSwipe";
+import WorkExperience from "./components/WorkExperience"
 
 // Used to shuffle array's every refresh
 function shuffle(array) {
@@ -59,6 +60,7 @@ const librarycards = shuffle([
 function App() {
   const { ref: mainPageRef, inView: mainPageInView } = useInView({ triggerOnce: false });
   const { ref: aboutMeRef, inView: aboutMeInView } = useInView({ triggerOnce: false });
+  const { ref: workExperienceRef, inView: workExperienceInView } = useInView({ triggerOnce: false });
   const { ref: skillsRef, inView: skillsInView } = useInView({ triggerOnce: false });
   const { ref: repoListRef, inView: repoListInView } = useInView({ triggerOnce: false });
 
@@ -71,6 +73,12 @@ function App() {
   const aboutMeProps = useSpring({
     opacity: aboutMeInView ? 1 : 0,
     transform: aboutMeInView ? 'translateY(0px)' : 'translateY(50px)',
+    config: { tension: 100, friction: 50 },
+  });
+
+  const workExperienceProps = useSpring({
+    opacity: workExperienceInView ? 1 : 0,
+    transform: workExperienceInView ? 'translateY(0px)' : 'translateY(50px)',
     config: { tension: 100, friction: 50 },
   });
 
@@ -88,37 +96,40 @@ function App() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <main style={{flex: 1}}>
-        <animated.div ref={mainPageRef} style={mainPageProps}>
-          <MainPage/>
-        </animated.div>
-        <animated.div ref={aboutMeRef} style={aboutMeProps}>
-          <AboutMe/>
-        </animated.div>
-        <animated.div ref={skillsRef} style={skillsProps}>
-          <Grid container spacing={3} sx = {{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-          }}>
-            <Grid item xs={9} sm={3}>
-              <SkillSwipe cards={skillcards} title = "Skills"/>
-            </Grid>
-            <Grid item xs={9} sm={3}>
-              <SkillSwipe cards={langcards} title = "Languages"/>
-            </Grid>
-            <Grid item xs={9} sm={3}>
-              <SkillSwipe cards={librarycards} title = "Libraries"/>
-            </Grid>
-          </Grid>
-        </animated.div>
-        <animated.div ref={repoListRef} style={repoListProps}>
-          <RepoList/>
-        </animated.div>
-      </main>
-      <animated.div style={{opacity: 1, transform: 'translateY(0px)'}}>
-        <FooterComponent/>
+        <main style={{flex: 1}}>
+            <animated.div ref={mainPageRef} style={mainPageProps}>
+                <MainPage/>
+            </animated.div>
+            <animated.div ref={aboutMeRef} style={aboutMeProps}>
+                <AboutMe/>
+            </animated.div>
+            <animated.div ref={workExperienceRef} style={workExperienceProps}>
+                <WorkExperience/>
+            </animated.div>
+            <animated.div ref={skillsRef} style={skillsProps}>
+                <Grid container spacing={3} sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                }}>
+                    <Grid item xs={9} sm={3}>
+                        <SkillSwipe cards={skillcards} title="Skills"/>
+                    </Grid>
+                    <Grid item xs={9} sm={3}>
+                        <SkillSwipe cards={langcards} title="Languages"/>
+                    </Grid>
+                    <Grid item xs={9} sm={3}>
+                        <SkillSwipe cards={librarycards} title="Libraries"/>
+                    </Grid>
+                </Grid>
+            </animated.div>
+            <animated.div ref={repoListRef} style={repoListProps}>
+                <RepoList/>
+            </animated.div>
+        </main>
+        <animated.div style={{opacity: 1, transform: 'translateY(0px)'}}>
+            <FooterComponent/>
       </animated.div>
     </div>
   );
